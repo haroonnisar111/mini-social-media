@@ -34,13 +34,13 @@ const PostCard = ({
       return;
     }
     try {
-      if (post.likes?.includes(user.uid)) {
+      if (post.likes?.includes(user?.uid)) {
         await updateDoc(postDocRef, {
-          likes: arrayRemove(user.uid),
+          likes: arrayRemove(user?.uid),
         });
       } else {
         await updateDoc(postDocRef, {
-          likes: arrayUnion(user.uid),
+          likes: arrayUnion(user?.uid),
         });
       }
       await fetchPosts();
@@ -55,13 +55,13 @@ const PostCard = ({
       return;
     }
     try {
-      if (post.savedBy?.includes(user.uid)) {
+      if (post.savedBy?.includes(user?.uid)) {
         await updateDoc(postDocRef, {
-          savedBy: arrayRemove(user.uid),
+          savedBy: arrayRemove(user?.uid),
         });
       } else {
         await updateDoc(postDocRef, {
-          savedBy: arrayUnion(user.uid),
+          savedBy: arrayUnion(user?.uid),
         });
       }
       fetchPosts();
@@ -111,7 +111,7 @@ const PostCard = ({
             aria-label='like'
             onClick={handleLike}
             sx={{
-              color: post.likes?.includes(user.uid) ? 'error.main' : 'inherit',
+              color: post.likes?.includes(user?.uid) ? 'error.main' : 'inherit',
               '&:hover': { color: 'error.main' },
             }}
           >
@@ -130,7 +130,7 @@ const PostCard = ({
           aria-label='save'
           onClick={handleSave}
           sx={{
-            color: post.savedBy?.includes(user.uid)
+            color: post.savedBy?.includes(user?.uid)
               ? 'primary.main'
               : 'inherit',
             '&:hover': { color: 'primary.main' },

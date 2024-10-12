@@ -78,7 +78,7 @@ const CommentSection = ({
     setLoading(true);
     const newComment: Comment = {
       text: comment.trim(),
-      user: user.displayName,
+      user: user?.displayName,
     };
 
     try {
@@ -112,13 +112,13 @@ const CommentSection = ({
         {comments.map((c: Comment, index: number) => (
           <ListItem key={index} className={classes.commentItem}>
             <Avatar
-              alt={c.user}
-              src={`/path/to/avatar/${c.user}.png`}
+              alt={c?.user}
+              src={`/path/to/avatar/${c?.user}.png`}
               className={classes.avatar}
             />
             <ListItemText
-              primary={<strong>{c.user}</strong>}
-              secondary={c.text}
+              primary={<strong>{c?.user}</strong>}
+              secondary={c?.text}
             />
           </ListItem>
         ))}
